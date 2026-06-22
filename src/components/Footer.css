@@ -1,0 +1,97 @@
+.footer {
+  position: relative;
+  border-top: 1px solid var(--border);
+  padding: 72px 0 0;
+  overflow: hidden;
+}
+
+/* large dimmed logo watermark with a cursor-following glow */
+.footer__watermark {
+  position: relative;
+  width: 108%;
+  margin: 8px -4% -3%;
+  aspect-ratio: 782 / 260;
+  line-height: 0;
+  user-select: none;
+  overflow: hidden;
+}
+.footer__wm-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.footer__wm-base {
+  opacity: 0.11;
+  -webkit-mask-image: radial-gradient(ellipse 72% 110% at 50% 28%, #000 32%, transparent 80%);
+  mask-image: radial-gradient(ellipse 72% 110% at 50% 28%, #000 32%, transparent 80%);
+}
+.footer__wm-glow {
+  opacity: 0;
+  filter: brightness(1.8) drop-shadow(0 0 22px rgba(244, 211, 94, 0.6));
+  -webkit-mask-image: radial-gradient(circle 170px at var(--x, 50%) var(--y, 50%), #000 0%, #000 22%, transparent 68%);
+  mask-image: radial-gradient(circle 170px at var(--x, 50%) var(--y, 50%), #000 0%, #000 22%, transparent 68%);
+  transition: opacity 0.35s var(--ease);
+}
+.footer__watermark:hover .footer__wm-glow { opacity: 0.9; }
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__wm-glow { display: none; }
+}
+
+.footer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding-bottom: 52px;
+}
+
+.footer__brand p {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  max-width: 380px;
+  margin-top: 22px;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.footer__social {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.footer__social:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 0;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 0.86rem;
+}
+.footer__legal { display: flex; gap: 24px; }
+.footer__legal a:hover { color: var(--text); }
+
+@media (max-width: 640px) {
+  .footer { padding-top: 56px; }
+  .footer__top { flex-direction: column; gap: 28px; padding-bottom: 40px; }
+  .footer__bottom { flex-direction: column; gap: 14px; text-align: center; }
+  .footer__legal { flex-wrap: wrap; justify-content: center; gap: 16px; }
+}

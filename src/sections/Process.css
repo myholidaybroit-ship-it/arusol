@@ -1,0 +1,95 @@
+.process { background: var(--bg-elevated); border-block: 1px solid var(--border); }
+
+.process__head { max-width: 600px; margin-bottom: 72px; }
+
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 28px;
+}
+
+/* connecting line through the node centers */
+.timeline__line {
+  position: absolute;
+  top: 29px;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(244, 211, 94, 0.45) 12%,
+    rgba(244, 211, 94, 0.45) 88%,
+    transparent
+  );
+}
+
+.tstep { position: relative; z-index: 1; }
+
+.tstep__node {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.tstep__badge {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  color: var(--gold);
+  transition: background 0.35s var(--ease), color 0.35s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.tstep:hover .tstep__badge {
+  background: var(--gold);
+  color: #0a0a0b;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px -12px rgba(244, 211, 94, 0.55);
+}
+.tstep__num {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  transition: color 0.3s var(--ease);
+}
+.tstep:hover .tstep__num { color: var(--gold); }
+
+.tstep__title { font-size: 1.2rem; margin-bottom: 12px; }
+.tstep__desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .timeline { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+  .timeline__line { display: none; }
+  .process__head { margin-bottom: 48px; }
+  .tstep__node { margin-bottom: 16px; }
+}
+@media (max-width: 560px) {
+  .timeline { grid-template-columns: 1fr; gap: 18px; }
+  .tstep {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 18px;
+    align-items: center;
+    padding: 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .tstep__node {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+  }
+  .tstep__title { grid-column: 2; grid-row: 1; margin-bottom: 2px; }
+  .tstep__desc { grid-column: 2; grid-row: 2; }
+}

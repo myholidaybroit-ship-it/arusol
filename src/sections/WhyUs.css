@@ -1,0 +1,90 @@
+.whyus__top {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.whyus__intro .section-lead { max-width: 420px; }
+
+/* ---------- Pillar cards (icon-led, horizontal) ---------- */
+.whyus__pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.whyus__pillar {
+  display: flex;
+  gap: 16px;
+  padding: 26px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), background 0.3s var(--ease);
+}
+.whyus__pillar:hover {
+  border-color: rgba(244, 211, 94, 0.35);
+  background: var(--surface-2);
+  transform: translateY(-3px);
+}
+.whyus__pillar-icon {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--gold-dim);
+  color: var(--gold);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+.whyus__pillar:hover .whyus__pillar-icon { background: var(--gold); color: #0a0a0b; }
+.whyus__pillar h3 { font-size: 1.08rem; margin-bottom: 8px; }
+.whyus__pillar p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.55; }
+
+/* ---------- Stats band ---------- */
+.whyus__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 64px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(244, 211, 94, 0.05), var(--bg-elevated) 60%);
+  overflow: hidden;
+}
+.whyus__stat {
+  padding: 38px 36px;
+  border-right: 1px solid var(--border);
+}
+.whyus__stat:last-child { border-right: none; }
+.whyus__stat-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(180deg, #fff, #cfcfcf);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.whyus__stat-label {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+
+@media (max-width: 980px) {
+  .whyus__top { grid-template-columns: 1fr; gap: 44px; }
+}
+@media (max-width: 620px) {
+  .whyus__pillars { grid-template-columns: 1fr; gap: 12px; }
+  .whyus__pillar { padding: 20px; }
+  .whyus__stats { grid-template-columns: 1fr 1fr; margin-top: 44px; }
+  .whyus__stat { padding: 26px 22px; }
+  .whyus__stat:nth-child(2) { border-right: none; }
+  .whyus__stat:nth-child(odd) { border-right: 1px solid var(--border); }
+  .whyus__stat { border-bottom: 1px solid var(--border); }
+  .whyus__stat:nth-last-child(-n+2) { border-bottom: none; }
+}
