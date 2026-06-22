@@ -60,6 +60,24 @@ export default function Contact() {
                 Within 24 hours
               </div>
             </div>
+
+            <a
+              className="contact__address"
+              href="https://maps.google.com/?q=Vasavi+MPM+Grand,+Yella+Reddy+Guda,+Ameerpet,+Hyderabad,+Telangana+500073"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg className="contact__address-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+                <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.6" />
+              </svg>
+              <span className="contact__address-text">
+                <span className="contact__address-label">Visit us</span>
+                Unit No: 602/B2, 5th Floor, 6th Level, Vasavi MPM Grand,
+                Yella Reddy Guda, Ameerpet, Srinagar Colony, Hyderabad,
+                Telangana, India – 500073.
+              </span>
+            </a>
           </div>
 
           <form className="contact__form" onSubmit={submit}>

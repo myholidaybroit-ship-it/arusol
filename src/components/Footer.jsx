@@ -48,7 +48,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <span>© {new Date().getFullYear()} Arusol Technologies. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} ARUSOL TECHNOLOGIES PRIVATE LIMITED</span>
           <div className="footer__legal">
             <Link to="/privacy">Privacy</Link>
             <Link to="/terms">Terms</Link>
