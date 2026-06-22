@@ -99,23 +99,74 @@
 .nav__burger.is-open span:nth-child(2) { opacity: 0; }
 .nav__burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Full-screen mobile overlay (sits just under the fixed header bar) */
 .nav__mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
   display: none;
   flex-direction: column;
-  gap: 4px;
-  padding: 16px 24px 28px;
-  background: var(--bg-elevated);
-  border-bottom: 1px solid var(--border);
+  justify-content: center;
+  padding: 88px 28px 44px;
+  background: var(--bg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), visibility 0.4s var(--ease);
 }
-.nav__mobile button, .nav__mobile a {
+.nav__mobile::before {
+  content: '';
+  position: absolute;
+  top: -10%; left: 50%;
+  transform: translateX(-50%);
+  width: 520px; height: 380px;
+  background: radial-gradient(circle, rgba(244, 211, 94, 0.1), transparent 65%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+.nav__mobile.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.nav__mobile-links {
+  display: flex;
+  flex-direction: column;
+}
+.nav__mobile-links > * {
   text-align: left;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  padding: 14px 4px;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  padding: 18px 0;
   border-bottom: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), color 0.2s var(--ease);
 }
-.nav__mobile-cta { margin-top: 18px; border: none !important; color: #0a0a0b !important; text-align: center !important; }
+.nav__mobile-links > *:active { color: var(--gold); }
+
+.nav__mobile-cta {
+  margin-top: 34px;
+  width: 100%;
+  border: none !important;
+  color: #0a0a0b !important;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+}
+
+/* staggered entrance */
+.nav__mobile.is-open .nav__mobile-links > * { opacity: 1; transform: none; }
+.nav__mobile.is-open .nav__mobile-links > *:nth-child(1) { transition-delay: 0.06s; }
+.nav__mobile.is-open .nav__mobile-links > *:nth-child(2) { transition-delay: 0.12s; }
+.nav__mobile.is-open .nav__mobile-links > *:nth-child(3) { transition-delay: 0.18s; }
+.nav__mobile.is-open .nav__mobile-links > *:nth-child(4) { transition-delay: 0.24s; }
+.nav__mobile.is-open .nav__mobile-links > *:nth-child(5) { transition-delay: 0.30s; }
+.nav__mobile.is-open .nav__mobile-cta { opacity: 1; transform: none; transition-delay: 0.36s; }
 
 @media (max-width: 900px) {
   .nav__links, .nav__cta { display: none; }
